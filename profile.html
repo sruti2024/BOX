@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Profile | Infovue</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="https://assets.ivdata.in/v2box/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="https://assets.ivdata.in/v2box/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="https://assets.ivdata.in/v2box/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="https://assets.ivdata.in/v2box/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- Custom Css -->
+    <link href="https://assets.ivdata.in/v2box/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="https://assets.ivdata.in/v2box/css/themes/all-themes.css" rel="stylesheet" />
+
+    
+
+
+    <style>
+        .dataTables_wrapper .dt-buttons a.dt-button{
+            background-color: #FF5722 !important;
+        }
+        .nav-tabs{
+            display: flex;
+            overflow: auto;
+            width: auto;
+            height: 5em;
+            overflow-y: hidden;
+        }
+
+        ::-webkit-scrollbar {
+             width: 2px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1; 
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #888; 
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555; 
+        }
+        .theme-blue .nav > li > a {
+          width:max-content;    
+        }
+        .profile-card .profile-body .image-area img{
+            border: 2px solid white;
+        }
+        .profile-card .profile-body .content-area p:last-child{
+            color: #003661;
+        }
+        .nav-tabs {
+            border: none;
+            height: 5em;          
+        }
+        .card .body{
+            padding: 0 10px;
+        }
+        .status{
+            padding: 3px 10px;
+            background-color: #26c355;
+            color: white;
+            margin: 0;
+            width: auto;
+            position: absolute;
+            top: 10px;
+            left: -1em;
+            font-size: 1em;
+            border: 2px solid white;
+        }
+        .home-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit , minmax(300px,1fr));
+            grid-auto-rows: auto;
+        }
+        .home-container li{
+            margin: 0;
+            border-left: 2px solid red;
+
+        }
+        .card{
+            margin: 0;
+        }
+        .card-about-me .body ul li{
+            border: none;
+        }
+        .profile-card{
+            margin-bottom: 2em;
+        }
+        .home-container li div{
+            display: flex;
+            flex-direction: column;
+        }
+        .home-container li .title{
+            display: block;
+        }
+        .home-container li .content div{
+            display: block;
+        }
+        .home-container li .content{
+            display: block;
+        }
+        .tab-content{
+            margin-top: -2em;
+        }
+        .card-profile{
+            margin-top: 1.5em;
+            margin-bottom: 10px;
+            box-shadow: none;
+        }
+        .card-profile .header{
+            padding-top: 0;
+            background-color: transparent;
+            border: none;
+        }
+
+    </style>
+
+  
+ 
+</head>
+
+<body class="theme-blue">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header" >
+                
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="https://assets.ivdata.in/v2box/index.html">
+                    
+                    <span style="font-weight: 700; letter-spacing: 2px;">INFOVUE</span>
+                
+                </a>
+            </div>
+
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="https://labs.infovue.in/v2box/core/img/profile.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+                    <div class="email">john.doe@example.com</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">trending_down</i>
+                            <span>Multi Level Menu</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <span>Menu Item</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <span>Menu Item - 2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Level - 2</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <span>Menu Item</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="menu-toggle">
+                                            <span>Level - 3</span>
+                                        </a>
+                                        <ul class="ml-menu">
+                                            <li>
+                                                <a href="javascript:void(0);">
+                                                    <span>Level - 4</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- #Menu -->
+
+
+        </aside>
+        <!-- #END# Left Sidebar -->
+
+    </section>
+
+
+
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-3">
+                    <div class="card profile-card">
+                        <div class="profile-header" style="background-color: #2196f3;">&nbsp;</div>
+                        <div class="profile-body" >
+                            <div class="image-area">
+                                <img src="http://labs.infovue.in/v2box/core/img/profile.png" width='100px' height="100px" alt="AdminBSB - Profile Image" />
+                            </div>
+                            <div class="content-area">
+                                <h4>Marc K. Hammond</h4>
+                                <p><b>AIN - 17</b></p>
+                                <p>
+                                    <div class="status">ACTIVE</div>                                  
+                                </p>
+                                <p>Teammate - Wave 4</p>
+ 
+                            </div>
+                        </div>
+                        <div class="profile-footer">
+                            <ul>
+                                <li>
+                                    <span>No. of DJ</span>
+                                    <span>94</span>
+                                </li>
+                                <li>
+                                    <span>No. of WR</span>
+                                    <span>6</span>
+                                </li>
+                                <li>
+                                    <span>No. of Ideas Given</span>
+                                    <span>2</span>
+                                </li>
+                                <li>
+                                    <span>No. of Tasks Completed</span>
+                                    <span>2</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <div class="card">
+                        <div class="body">
+                            <div>
+
+
+                                
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                                    <li role="presentation"><a href="#daily-journal" aria-controls="settings" role="tab" data-toggle="tab">Journals</a></li>
+                                    <li role="presentation"><a href="#leave" aria-controls="settings" role="tab" data-toggle="tab">Leave</a></li>
+                                    <li role="presentation"><a href="#review" aria-controls="settings" role="tab" data-toggle="tab">Weekly Review</a></li>
+                                    <li role="presentation"><a href="#idea" aria-controls="settings" role="tab" data-toggle="tab">Idea</a></li>
+                                    <li role="presentation"><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Change Password</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                           <div class="card card-about-me" style="box-shadow: none;">
+
+                        <div class="body">
+                            <ul class="home-container">
+                                <li>
+                                    <div class="title">
+                                        <i class="material-icons">question_answer</i>
+                                        Contact
+                                    </div>
+                                    <div class="content">
+                                        <div style="margin-right:auto;"><b>Email</b> : varunkrishnan0001@gmail.com </div>
+                                        <div style="margin-top: 1em;"><b>Phone :</b> (+91) 90033 29771</div>
+                                        
+                                     </div>
+                                </li>
+
+                                <li>
+                                    <div class="title">
+                                        <i class="material-icons">school</i>
+                                        Education
+                                    </div>
+                                    <div class="content">
+                                        <div style="margin-right:auto;"><b>Education Qualification</b>B.E., Computer Science and Engineering</div>
+                                        <div style="margin-top: 1em;"><b>Institution:</b>ABC Engineering College</div>
+                                        <div style="margin-top: 1em;"><b>Year of Passing</b> 2023</>
+                                    </div>
+                                </li>
+
+                                
+                                <li>
+                                    <div class="title">
+                                        <i class="material-icons">edit</i>
+                                        Skills
+                                    </div>
+                                    <div class="content skill-label">
+                                        <span class="label bg-red">UI Design</span>
+                                        <span class="label bg-teal">JavaScript</span>
+                                        <span class="label bg-blue">PHP</span>
+                                        <span class="label bg-amber">Node.js</span>
+                                        <span class="label bg-red">Video Editing</span>
+                                        <span class="label bg-teal">Figma</span>
+                                        <span class="label bg-blue">Adobe Photoshop</span>
+                                        <span class="label bg-amber">HTML</span>
+                                    </div>
+                                </li>
+
+
+                                <li>
+                                    <div class="title">
+                                        <i class="material-icons">thumb_up</i>
+                                        Joining Reason
+                                    </div>
+                                    <div class="content">
+                                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat voluptas veritatis eveniet deleniti, explicabo praesentium corporis illo eaque quo consequuntur!</div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="title">
+                                        <i class="material-icons">person</i>
+                                        Personal Details
+                                    </div>
+                                    <div class="content">
+                                        <div style="margin-top: 1em;"><b>DOB:</b> 06/01/2002</div>
+                                        <div style="margin-top: 1em;"><b>Hobbies :</b> Playing Games, Reading</div>
+                                        <div style="margin-top: 1em;"><b>Occupation :</b> Student</div>
+                                     </div>
+                                </li>
+
+
+
+                                <li>
+                                    <div class="title">
+                                        <i class="material-icons">location_on</i>
+                                        Location
+                                    </div>
+                                    <div class="content">
+                                        <div style="margin-right:auto;"><b> Residental Address:</b>106/A, Annanagar</div>
+                                        <div style="margin-top: 1em;"><b>City:</b>Chennai 	&nbsp;<b>Pin:</b>641 666</div>
+                                        <div style="margin-top: 1em;"><b>State</b> Tamil Nadu &nbsp; <b>Country</b> India</div>
+                                    </div>
+
+                                </li>
+                                
+
+
+                            </ul>
+                        </div>
+                    </div> 
+                                    </div>
+
+
+
+
+
+<!-- ___________________________________________Leave_____________________________________ -->
+
+
+<div role="tabpanel" class="tab-pane fade in" id="leave">
+    <!-- Exportable Table -->
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card card-profile">
+                <div class="header" 
+                style="display:flex; justify-content: space-between; -ms-ime-align: center;"
+                >
+                    <h2>
+                        Leave
+                                <button id="myBtn" type="submit" class="btn bg-light-green"  style="
+                                font-size: 12px; 
+                                outline: none;
+                                border: none;
+                                padding: 5px 5px;
+                                border-radius: 0px;
+                                margin-left: 10px;">Apply <i class="material-icons" style="font-size:12px">add</i> </button>
+                    </h2>                   
+                    
+                    <!-- leave application -->
+                    <h2 style="font-size: 1em; color: rgb(75, 75, 75);">
+                        Total : 03
+                    </h2>                        
+
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Duration</th>
+                                    <th>Reason</th>                                   
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>17</td>
+                                    <td>From:  2020-07-27 <br>
+                                        To:  2020-07-28</td>
+                                    <td>1</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, numquam.</td>
+                                    <td>2020/07/27 12:04:14am</>
+                                </tr>
+                              
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Exportable Table -->
+</div>
+
+
+<!-- ___________________________________________Daily Journal_____________________________________ -->
+
+
+<div role="tabpanel" class="tab-pane fade in" id="daily-journal">
+            <!-- Exportable Table -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card card-profile">
+                        <div class="header" 
+                        style="display:flex; justify-content: space-between; -ms-ime-align: center;"
+                        >
+                            <h2>
+                                Journals
+                                <button id="myBtn" type="submit" class="btn bg-light-green" value="Apply Leave" style="
+                                font-size: 12px; 
+                                outline: none;
+                                border: none;
+                                padding: 5px 5px;
+                                border-radius: 0px;
+                                margin-left: 10px;">Upload <i class="material-icons" style="font-size:12px">add</i> </button>
+                            </h2>                   
+                            
+                            <!-- leave application -->
+                            <h2 style="font-size: 1em; color: rgb(75, 75, 75);">
+                                Total : 03
+                            </h2>                        
+        
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Journal</th>
+                                            <th>Remarks</th>
+                                            <th>Status</th>
+                                            <th>DJ ID</th>
+                                        </tr>
+                                    </thead>
+                                
+                                    <tbody>
+                                        <tr>
+                                            <td>12/08/2020</td>
+                                            <td><button class="btn-info">View</button></td>
+                                            <td>Good job</td>
+                                            <td>Approved</td>
+                                            <td>18</td>
+                                        </tr>
+                                        <tr>
+                                            <td>13/08/2020</td>
+                                            <td><button class="btn-info">View</button></td>
+                                            <td>Not satisfied</td>
+                                            <td>Disapproved</td>
+                                            <td>78</td>
+                                        </tr>
+                                        <tr>
+                                            <td>14/08/2020</td>
+                                            <td><button class="btn-info">View</button></td>
+                                            <td>Needs Improvement</td>
+                                            <td>Approved</td>
+                                            <td>100</td>
+                                        </tr>
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Exportable Table -->
+</div>
+
+<!-- ----------------------------------------------------weeekly reveiw--------------------- -->
+
+<div role="tabpanel" class="tab-pane fade in" id="review">
+    <!-- Exportable Table -->
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card card-profile">
+                <div class="header" 
+                style="display:flex; justify-content: space-between; -ms-ime-align: center;"
+                >
+                    <h2>
+                        Weekly Review
+                                <button id="myBtn" type="submit" class="btn bg-light-green" style="
+                                font-size: 12px; 
+                                outline: none;
+                                border: none;
+                                padding: 5px 5px;
+                                border-radius: 0px;
+                                margin-left: 10px;">Upload<i class="material-icons" style="font-size:12px">add</i> </button>
+                    </h2>                   
+                    
+                    <!-- leave application -->
+                    <h2 style="font-size: 1em; color: rgb(75, 75, 75);">
+                        Total : 01
+                    </h2>                        
+
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>Review ID</th>
+                                    <th>Given By</th>
+                                    <th>Time of upload</th>
+                                    <th>Feel about</th>
+                                    <th>Task done and To do next</th>
+                                    <th>Reflections and achievements</th>
+                                    <th>Challenges</th>
+                                    <th>Suggestion</th>
+                                    <th>Improvements</th>
+                                    <th>Remarks</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Varun Krishnan</td>
+                                    <td>2020/06/26 07:25:19am</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam in dolor eveniet eum possimus quaerat dolore illum nobis facere odit.</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet tempora laudantium praesentium debitis, ipsam minus facere ut iure exercitationem repellendus.</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet tempora laudantium praesentium debitis, ipsam minus facere ut iure exercitationem repellendus.</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet tempora laudantium praesentium debitis, ipsam minus facere ut iure exercitationem repellendus.</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet tempora laudantium praesentium debitis, ipsam minus facere ut iure exercitationem repellendus.</td>
+                                    <td>Needs improvement</td>
+                                    <td>Approved</td>
+                                    <td>Approved</td>
+                                </tr>
+
+                                                               
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Exportable Table -->
+</div>
+
+
+
+<!-- ------------------------------ideas--------------------- -->
+<div role="tabpanel" class="tab-pane fade in" id="idea">
+    <!-- Exportable Table -->
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card card-profile">
+                <div class="header" 
+                style="display:flex; justify-content: space-between; -ms-ime-align: center;"
+                >
+                    <h2>
+                        Idea
+                                <button id="myBtn" type="submit" class="btn bg-light-green" style="
+                                font-size: 12px; 
+                                outline: none;
+                                border: none;
+                                padding: 5px 5px;
+                                border-radius: 0px;
+                                margin-left: 10px;">Add <i class="material-icons" style="font-size:12px">add</i> </button>
+                    </h2>                   
+                    
+                    <!-- leave application -->
+                    <h2 style="font-size: 1em; color: rgb(75, 75, 75);">
+                        Total : 01
+                    </h2>                        
+
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>Idea No</th>
+                                    <th>Idea</th>
+                                    <th>Status</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>01</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores rem necessitatibus eveniet. Esse quis laudantium laborum magnam ea nesciunt qui.</td>
+                                    <td>Approved</td>
+                                    <td>14-08-2020 03:30 PM</td>
+                                </tr>                                                          
+                           </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Exportable Table -->
+</div>
+
+
+<!-- ___________________________________________Reset Password_____________________________________ -->
+                                    
+<div role="tabpanel" class="tab-pane fade in" id="change_password_settings">
+    <form class="form-horizontal" style="margin-top:1em;">
+
+        <div class="form-group" style="display: flex;">
+            <label for="NewPassword" class="col-sm-3 control-label">New Password</label>
+            <div class="col-sm-9">
+                <div class="form-line">
+                    <input type="password" class="form-control" id="NewPassword" name="NewPassword" placeholder="New Password" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="display: flex;">
+            <label for="NewPasswordConfirm" class="col-sm-3 control-label">Retype Password</label>
+            <div class="col-sm-9">
+                <div class="form-line">
+                    <input type="password" class="form-control" id="NewPasswordConfirm" name="NewPasswordConfirm" placeholder="New Password (Confirm)" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-danger">SUBMIT</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Jquery Core Js -->
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="https://assets.ivdata.in/v2box/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="https://assets.ivdata.in/v2box/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="https://assets.ivdata.in/v2box/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="https://assets.ivdata.in/v2box/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="https://assets.ivdata.in/v2box/js/admin.js"></script>
+    <script src="https://assets.ivdata.in/v2box/js/pages/tables/jquery-datatable.js"></script>
+
+    <!-- Demo Js -->
+    <script src="https://assets.ivdata.in/v2box/js/demo.js"></script>
+
+    
+
+</body>
+
+
+
+
+
+
+</html>
